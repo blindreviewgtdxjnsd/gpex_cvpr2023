@@ -384,6 +384,19 @@ class GPEXModule(nn.Module):
                 # ~ sliced_GPX = self.GP_X[:, int(rngdim[0]):int(rngdim[1])] #[size_recurringdataset x urng]
                 # ~ self.precomputed_XTX.append(torch.matmul(torch.transpose(sliced_GPX,0,1), sliced_GPX).detach())
         
+    def checkequal_f1path_gpath_ontest(self, num_iters):
+        self.eval()
+        self._list_outputgp_versus_outputg = []
+        
+        
+        with torch.no_grad():
+            for n in range(num_iters):
+                with forward_replaced(self.module_tobecomeGP, self._forward_checkequalf1pathgpath):
+                    output = self.func_feed_test_minibatch()
+        self.train()
+        if(self.flag_train_memefficient == True):
+            self._set_rng_headsincompgraph(input_rng = [0 , self.memefficeint_heads_in_compgraph])
+        return self._list_outputgp_versus_outputg
     
     
     def init_UV(self):
