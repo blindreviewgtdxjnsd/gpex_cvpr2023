@@ -4,8 +4,9 @@ Note that in the mini-imagenet dataset there are 36 labels which are only presen
 We excluded those labels when training the classifier.
 
 
-Becuase of the rebuttal time limit **GPEX was trained only for 2 epochs***, but according to the this even 
+Becuase of the rebuttal time limit **GPEX was trained only for 2 epochs**, but according to the below figure even 
 after 2 epochs of training GPEX, the GPs are highly correlated with ANN (coef around 80).
+
 <img src="GP_vs_ANN_scatter.png" width="400">
 
 To run the demo, please do the following:
