@@ -1,1 +1,1 @@
-# gpex
+# Demo of Applying GPEX for MiniImagenet
